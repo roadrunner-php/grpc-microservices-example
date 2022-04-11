@@ -1,0 +1,79 @@
+{
+    "name": "spiral/app",
+    "type": "project",
+    "license": "MIT",
+    "description": "Spiral Skeleton Application",
+    "homepage": "https://spiral.dev",
+    "support": {
+        "issues": "https://github.com/spiral/app/issues",
+        "source": "https://github.com/spiral/app"
+    },
+    "authors": [
+        {
+            "name": "Pavel Buchnev (butschster)",
+            "email": "pavel.buchnev@spiralscout.com"
+        },
+        {
+            "name": "Wolfy-J",
+            "email": "wolfy.jd@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../shared",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "ext-mbstring": "*",
+        "cycle/entity-behavior": "^1.1",
+        "doctrine/collections": "^1.6",
+        "grpc/grpc": "^1.42",
+        "nesbot/carbon": "^2.57",
+        "spiral/cycle-bridge": "^1.0",
+        "spiral/framework": "^2.9",
+        "spiral/nyholm-bridge": "^1.0",
+        "spiral/roadrunner-bridge": "^1.0",
+        "spiral/shared": "*",
+        "symfony/var-dumper": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "spiral-packages/database-seeder": "dev-master",
+        "spiral/testing": "^1.1"
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "php -r \"copy('.env.sample', '.env');\"",
+            "php app.php encrypt:key -m .env",
+            "php app.php configure -vv",
+            "rr get-binary"
+        ]
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/src",
+            "Database\\": "app/database"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "publish-cmd": "php app.php publish",
+        "branch-alias": {
+            "dev-master": "1.4.x-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

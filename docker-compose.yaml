@@ -1,0 +1,42 @@
+version: '3.5'
+
+services:
+    users:
+        build: "./docker/app"
+        volumes:
+            - ./users:/app
+        env_file:
+            -   ./docker/app/.env
+        environment:
+            - DATABASE_DSN=pgsql:host=postgresql;port=5432;dbname=test;user=test;password=test
+            - USERSERVICE_HOST=users:9001
+            BLOGSERVICE_HOST=blog:9001
+        ports:
+            - "8081:8080"
+        command: >
+            bash -c "php app.php migrate
+            && php app.php db:seed
+            && ./rr serve"
+        depends_on:
+            - postgresql
+
+    blog:
+        build: "./docker/app"
+        volumes:
+            - ./blog:/app
+        env_file:
+            -   ./docker/app/.env
+        ports:
+            - "8082:8080"
+        command: >
+            bash -c "php app.php migrate
+            && php app.php db:seed
+            && ./rr serve"
+        depends_on:
+            - postgresql
+
+    postgresql:
+        image: postgres
+        environment:
+            POSTGRES_PASSWORD: test
+            POSTGRES_USER: test
