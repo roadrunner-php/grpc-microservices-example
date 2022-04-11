@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package api.users.v1;
+
+option php_namespace = "Spiral\\Shared\\Services\\Users\\v1";
+option php_metadata_namespace = "Spiral\\Shared\\Services\\Users\\v1\\GPBMetadata";
+
+import "api/users/v1/message.proto";
+
+service UserService {
+    rpc List (api.users.v1.dto.UserListRequest) returns (api.users.v1.dto.UserListResponse) {
+    }
+
+    rpc ListByIds (api.users.v1.dto.UserListByIdsRequest) returns (api.users.v1.dto.UserListResponse) {
+    }
+
+    rpc Get (api.users.v1.dto.UserGetRequest) returns (api.users.v1.dto.UserGetResponse) {
+    }
+
+    rpc Register (api.users.v1.dto.UserRegisterRequest) returns (api.users.v1.dto.UserGetResponse) {
+    }
+
+    rpc Auth (api.users.v1.dto.UserAuthRequest) returns (api.users.v1.dto.UserAuthResponse) {
+    }
+
+    rpc Update (api.users.v1.dto.UserUpdateRequest) returns (api.users.v1.dto.UserGetResponse) {
+    }
+
+    rpc Delete (api.users.v1.dto.UserDeleteRequest) returns (api.users.v1.dto.UserDeleteResponse) {
+    }
+}

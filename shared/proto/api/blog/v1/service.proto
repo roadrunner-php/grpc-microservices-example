@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package api.blog.v1;
+
+option php_namespace = "Spiral\\Shared\\Services\\Blog\\v1";
+option php_metadata_namespace = "Spiral\\Shared\\Services\\Blog\\v1\\GPBMetadata";
+
+import "api/blog/v1/message.proto";
+
+service BlogService {
+    rpc List (api.blog.v1.dto.PostListRequest) returns (api.blog.v1.dto.PostListResponse) {
+    }
+
+    rpc Get (api.blog.v1.dto.PostGetRequest) returns (api.blog.v1.dto.PostGetResponse) {
+    }
+
+    rpc Create (api.blog.v1.dto.PostCreateRequest) returns (api.blog.v1.dto.PostGetResponse) {
+    }
+
+    rpc Update (api.blog.v1.dto.PostUpdateRequest) returns (api.blog.v1.dto.PostGetResponse) {
+    }
+
+    rpc Delete (api.blog.v1.dto.PostDeleteRequest) returns (api.blog.v1.dto.PostDeleteResponse) {
+    }
+}

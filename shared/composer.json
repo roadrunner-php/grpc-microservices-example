@@ -1,0 +1,62 @@
+{
+    "name": "spiral/shared",
+    "description": "This is my package shared",
+    "keywords": [
+        "spiral",
+        "spiral",
+        "shared"
+    ],
+    "homepage": "https://github.com/spiral/shared",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pavel Buchnev (butschster)",
+            "email": "pavel.buchnev@spiralscout.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "grpc/grpc": "^1.42",
+        "spiral/boot": "^2.9",
+        "spiral/files": "^2.9",
+        "spiral/hmvc": "^2.9",
+        "spiral/console": "^2.9",
+        "spiral/roadrunner-grpc": "^2.0",
+        "spiral/roadrunner-cli": "^2.0",
+        "ruvents/spiral-jwt": "^0.1.1"
+    },
+    "require-dev": {
+        "nette/php-generator": "^3.6",
+        "mockery/mockery": "^1.5",
+        "phpunit/phpunit": "^9.5",
+        "spiral/testing": "^1.0",
+        "vimeo/psalm": "^4.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Spiral\\Shared\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spiral\\Shared\\Tests\\App\\": "tests/app",
+            "Spiral\\Shared\\Tests\\": "tests/src"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "psalm": "vendor/bin/psalm --config=psalm.xml ./src"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "spiral": {
+            "bootloaders": [
+                "Spiral\\Shared\\Bootloader\\SharedBootloader"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package api.users.v1.dto;
+
+option php_namespace = "Spiral\\Shared\\Services\\Users\\v1\\DTO";
+option php_metadata_namespace = "Spiral\\Shared\\Services\\Users\\v1\\GPBMetadata";
+
+import "google/protobuf/timestamp.proto";
+import "api/common/v1/message.proto";
+
+message User {
+    int32 id = 1;
+    string username = 2;
+    string email = 3;
+    bool is_admin = 4;
+    google.protobuf.Timestamp created_at = 5;
+}
+
+message UserListRequest {
+    int32 page = 1;
+    int32 per_page = 2;
+}
+
+message UserListByIdsRequest {
+    repeated int32 ids = 1;
+}
+
+message UserListResponse {
+    repeated User users = 1;
+    api.common.v1.dto.Pagination pagination = 2;
+}
+
+message UserGetRequest {
+    int32 id = 1;
+}
+
+message UserGetResponse {
+    User user = 1;
+}
+
+message UserRegisterRequest {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+    bool is_admin = 4;
+}
+
+message UserAuthRequest {
+    string username = 1;
+    string password = 2;
+}
+
+message UserAuthResponse {
+    api.common.v1.dto.Token token = 1;
+    User user = 2;
+}
+
+message UserUpdateRequest {
+    int32 id = 1;
+    string username = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message UserDeleteRequest {
+    int32 id = 2;
+}
+
+message UserDeleteResponse {
+
+}
