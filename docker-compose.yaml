@@ -10,7 +10,7 @@ services:
         environment:
             - DATABASE_DSN=pgsql:host=postgresql;port=5432;dbname=test;user=test;password=test
             - USERSERVICE_HOST=users:9001
-            BLOGSERVICE_HOST=blog:9001
+            - BLOGSERVICE_HOST=blog:9001
         ports:
             - "8081:8080"
         command: >
