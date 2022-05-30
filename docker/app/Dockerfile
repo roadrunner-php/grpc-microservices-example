@@ -1,4 +1,4 @@
- FROM php:8.0
+FROM php:8.0
 
 # Optional, force UTC as server time
 RUN echo "UTC" > /etc/timezone
